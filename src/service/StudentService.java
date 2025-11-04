@@ -1,5 +1,6 @@
 package service;
 
+import model.Course;
 import model.Student;
 import exception.StudentNotFoundException;
 
@@ -51,4 +52,27 @@ public class StudentService {
             System.out.println("ID: " + student.getId() + ", Nom: " + student.getName() + ", Email: " + student.getEmail());
         }
     }
+
+    public Student getStudentById(int id) {
+        return studentMap.get(id);
+    }
+
+    public void addCourseToStudent(int studentId, Course course) {
+        Student s = getStudentById(studentId);
+        if(s != null) s.addCourse(course);
+        else System.out.println("Student not found.");
+    }
+
+    public void updateStudentCourse(int studentId, String courseName, float newNote) {
+        Student s = getStudentById(studentId);
+        if(s != null) s.updateCourse(courseName, newNote);
+        else System.out.println("Student not found.");
+    }
+
+    public void removeStudentCourse(int studentId, String courseName) {
+        Student s = getStudentById(studentId);
+        if(s != null) s.removeCourse(courseName);
+        else System.out.println("Student not found.");
+    }
+
 }

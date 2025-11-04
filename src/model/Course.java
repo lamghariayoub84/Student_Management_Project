@@ -70,7 +70,7 @@ public class Course {
         return this.note;
     }
 
-    // Setter for name
+    // Setter for  name
     public void setName(String name)
     {
         this.name = name;

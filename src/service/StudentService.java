@@ -4,11 +4,14 @@ import model.Course;
 import model.Student;
 import exception.StudentNotFoundException;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class StudentService {
     private Map<Integer, Student> studentMap = new HashMap<>();
+    private List<Student> students = new ArrayList<>();
 
     public void addStudent(Student student) {
         if (studentMap.containsKey(student.getId())) {
@@ -73,6 +76,14 @@ public class StudentService {
         Student s = getStudentById(studentId);
         if(s != null) s.removeCourse(courseName);
         else System.out.println("Student not found.");
+    }
+
+    /**
+     * Get all students
+     * @return List of all students
+     */
+    public List<Student> getAllStudents() {
+        return students;
     }
 
 }

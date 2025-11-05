@@ -4,7 +4,11 @@ import exception.InvalidCourseException;
 import exception.StudentNotFoundException;
 import model.Course;
 import model.Student;
+import service.StatisticsService;
 import service.StudentService;
+import strategy.AverageCalculationStrategy;
+import strategy.BestStudentStrategy;
+import strategy.FailingStudentsStrategy;
 
 import java.util.Scanner;
 
@@ -12,6 +16,7 @@ public class ConsoleMenu {
 
     private Scanner scanner = new Scanner(System.in);
     private StudentService studentService = new StudentService();
+    private StatisticsService statisticsService = new StatisticsService();
 
     // Lire un int valide
     private int readValidInt(String prompt) {
@@ -49,17 +54,34 @@ public class ConsoleMenu {
             System.out.println("3. Update Student");
             System.out.println("4. Delete Student");
             System.out.println("5. Manage Courses for a Student");
+            System.out.println("6. Statistics Menu");
             System.out.println("0. Exit");
             choice = readValidInt("Enter choice: ");
 
             switch (choice) {
-                case 1: addStudentFlow(); break;
-                case 2: studentService.viewAllStudents(); break;
-                case 3: updateStudentFlow(); break;
-                case 4: deleteStudentFlow(); break;
-                case 5: manageCoursesFlow(); break;
-                case 0: System.out.println("Au revoir !"); break;
-                default: System.out.println("Choix invalide."); break;
+                case 1:
+                    addStudentFlow();
+                    break;
+                case 2:
+                    studentService.viewAllStudents();
+                    break;
+                case 3:
+                    updateStudentFlow();
+                    break;
+                case 4:
+                    deleteStudentFlow();
+                    break;
+                case 5:
+                    manageCoursesFlow();
+                    break;
+                case 6: statisticsMenu();
+                break;
+                case 0:
+                    System.out.println("Au revoir !");
+                    break;
+                default:
+                    System.out.println("Choix invalide.");
+                    break;
             }
         } while (choice != 0);
     }
@@ -167,10 +189,60 @@ public class ConsoleMenu {
                     }
                     break;
                 }
-                case 0: System.out.println("Returning to Main Menu..."); break;
-                default: System.out.println("Invalid choice."); break;
+                case 0:
+                    System.out.println("Returning to Main Menu...");
+                    break;
+                default:
+                    System.out.println("Invalid choice.");
+                    break;
             }
 
         } while (choice != 0);
     }
+
+
+    //Statistics Menu
+    private void statisticsMenu() {
+        int choice;
+        do {
+            System.out.println("\n===== Statistics Menu =====");
+            System.out.println("1. Calculate Average per Student");
+            System.out.println("2. Find Best Student");
+            System.out.println("3. List Failing Students (Average < 10)");
+            System.out.println("4. Show All Statistics");
+            System.out.println("0. Back to Main Menu");
+            System.out.print("Enter choice: ");
+            choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1 -> {
+                    statisticsService.setStrategy(new AverageCalculationStrategy());
+                    statisticsService.executeStrategy(studentService.getAllStudents());
+                }
+                case 2 -> {
+                    statisticsService.setStrategy(new BestStudentStrategy());
+                    statisticsService.executeStrategy(studentService.getAllStudents());
+                }
+                case 3 -> {
+                    statisticsService.setStrategy(new FailingStudentsStrategy());
+                    statisticsService.executeStrategy(studentService.getAllStudents());
+                }
+                case 4 -> {
+                    statisticsService.setStrategy(new AverageCalculationStrategy());
+                    statisticsService.executeStrategy(studentService.getAllStudents());
+
+                    statisticsService.setStrategy(new BestStudentStrategy());
+                    statisticsService.executeStrategy(studentService.getAllStudents());
+
+                    statisticsService.setStrategy(new FailingStudentsStrategy());
+                    statisticsService.executeStrategy(studentService.getAllStudents());
+                }
+                case 0 -> System.out.println("Returning to Main Menu...");
+                default -> System.out.println("Invalid choice.");
+            }
+        } while (choice != 0);
+    }
 }
+
+

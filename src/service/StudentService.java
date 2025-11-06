@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class StudentService {
     private Map<Integer, Student> studentMap = new HashMap<>();
-    private List<Student> students = new ArrayList<>();
+
 
     public void addStudent(Student student) {
         if (studentMap.containsKey(student.getId())) {
@@ -83,7 +83,7 @@ public class StudentService {
      * @return List of all students
      */
     public List<Student> getAllStudents() {
-        return students;
+        return new ArrayList<>(studentMap.values());
     }
 
 }

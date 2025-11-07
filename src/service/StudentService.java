@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class StudentService {
-    private List<Student> students = new ArrayList<>();
-    private Scanner scanner = new Scanner(System.in);
+    private Map<Integer, Student> studentMap = new HashMap<>();
+
 
     // Ajouter un étudiant
 
@@ -324,7 +324,7 @@ public class StudentService {
      * @return List of all students
      */
     public List<Student> getAllStudents() {
-        return students;
+        return new ArrayList<>(studentMap.values());
     }
 
 }

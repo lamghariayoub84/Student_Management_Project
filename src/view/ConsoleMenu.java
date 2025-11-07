@@ -177,7 +177,7 @@ public class ConsoleMenu {
 
     //Store student data in a file
     private void storefileMenu() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         ArrayList<Student> studentArrayList = new ArrayList<>();
 
         if (file.exists()) {
@@ -201,7 +201,7 @@ public class ConsoleMenu {
     }
 
     private void readerfileMenu() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         if (!file.exists()) {
             System.out.println("No file found.");
             return;
@@ -219,7 +219,7 @@ public class ConsoleMenu {
     }
 
     public void addCourseToStudent() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         ArrayList<Student> studentArrayList = new ArrayList<>();
 
         if (file.exists()) {
@@ -306,7 +306,7 @@ public class ConsoleMenu {
     }
 
     public void updateCourse() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         ArrayList<Student> studentArrayList = new ArrayList<>();
 
 
@@ -425,7 +425,7 @@ public class ConsoleMenu {
         }
     }
     public void removeCourse() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         ArrayList<Student> studentArrayList = new ArrayList<>();
 
         if (file.exists()) {
@@ -507,7 +507,7 @@ public class ConsoleMenu {
         }
     }
     public void calculateAverageNotePerStudent() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         ArrayList<Student> studentArrayList = new ArrayList<>();
 
         // Charger les étudiants depuis le fichier
@@ -546,7 +546,7 @@ public class ConsoleMenu {
     }
 
     public void findBestStudent() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         ArrayList<Student> studentArrayList = new ArrayList<>();
 
         // Charger les étudiants depuis le fichier
@@ -597,7 +597,7 @@ public class ConsoleMenu {
         }
     }
     public void listFailingStudents() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         ArrayList<Student> studentArrayList = new ArrayList<>();
 
         // Charger les étudiants depuis le fichier
@@ -642,7 +642,7 @@ public class ConsoleMenu {
         }
     }
     public void showAllStatistics() {
-        File file = new File("C:/Users/AYOUB/Desktop/Project mouad/Student Management app/students.txt");
+        File file = new File("students.txt");
         ArrayList<Student> students = new ArrayList<>();
 
         // Charger les étudiants depuis le fichier

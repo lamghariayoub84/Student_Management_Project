@@ -1,14 +1,15 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Student {
+public class Student implements Serializable {
+    private static final long serialVersionUID = 1L;
     private int id;
     private String name;
     private String email;
-
-    //Tâche 2
+    // Placeholder pour la Tâche 2
     private List<Course> courses;
 
     public Student(int id, String name, String email) {
@@ -34,6 +35,7 @@ public class Student {
     public String toString() {
         return "ID: " + id + " | Name: " + name + " | Email: " + email + " | Courses: " + courses;
     }
+
 
     /**
      * Add a course to the student's list of courses.
@@ -80,4 +82,5 @@ public class Student {
         System.out.println("Course not found: " + courseName);
         return false;
     }
+
 }

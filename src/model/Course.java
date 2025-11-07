@@ -2,12 +2,14 @@ package model;
 
 import exception.InvalidCourseException;
 
+import java.io.Serializable;
+
 /**
  * Class representing a Course with a name and a note (0-20).
  * Provides a Builder pattern to create Course instances safely with validation.
  */
-public class Course {
-
+public class Course implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String name;
     private float note;
 
@@ -70,7 +72,7 @@ public class Course {
         return this.note;
     }
 
-    // Setter for  name
+    // Setter for name
     public void setName(String name)
     {
         this.name = name;
@@ -109,3 +111,4 @@ public class Course {
     }
 
 }
+
